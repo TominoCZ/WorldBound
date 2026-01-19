@@ -1,8 +1,8 @@
 {
     "Group": "Morphox",
     "Name": "WorldBound",
-    "Version": "0.0.2",
-    "Description": "Bind player data to Worlds instead of the Universes",
+    "Version": "1.0.0",
+    "Description": "Save player data separately in worlds",
     "Authors": [
         {
             "Name": "Morphox"

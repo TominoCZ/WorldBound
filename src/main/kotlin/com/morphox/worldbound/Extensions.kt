@@ -16,14 +16,6 @@ import com.hypixel.hytale.server.core.universe.world.storage.EntityStore
 import java.nio.file.Path
 import java.util.UUID
 
-fun Holder<EntityStore?>.isValid(): Boolean {
-    return getComponent(Player.getComponentType()) != null
-}
-
-val Holder<EntityStore>.uuid: UUID
-    get() {
-        return getComponent(UUIDComponent.getComponentType())!!.uuid
-    }
 
 fun HytaleLogger.info(msg: String) {
     atInfo().log(msg)
@@ -37,6 +29,14 @@ fun HytaleLogger.error(msg: String) {
     atSevere().log(msg)
 }
 
+val Holder<EntityStore>.uuid: UUID
+    get() {
+        return getComponent(UUIDComponent.getComponentType())!!.uuid
+    }
+
+fun Holder<EntityStore?>.isValid(): Boolean {
+    return getComponent(Player.getComponentType()) != null
+}
 
 fun Holder<EntityStore>.reset() {
     val player: Player = getComponent(Player.getComponentType())!!

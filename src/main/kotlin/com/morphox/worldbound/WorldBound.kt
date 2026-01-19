@@ -44,14 +44,14 @@ class WorldBound(init: JavaPluginInit) : JavaPlugin(init) {
     }
 
     private fun swapWorld(world: World, holder: Holder<EntityStore>) {
-        val uuid: UUIDComponent = holder.getComponent(UUIDComponent.getComponentType())!!
+        val uuid = holder.uuid
         val playerRef: PlayerRef = holder.getComponent(PlayerRef.getComponentType())!!
         val player: Player = holder.getComponent(Player.getComponentType())!!
 
         LOG.info("[World-Bound] Player ${playerRef.username} has entered '${world.name}'!")
 
         storage.apply {
-            val data = load(uuid.uuid, world)!!
+            val data = load(uuid, world)!!
             if (!data.isValid()) {
                 LOG.info("[World-Bound] Creating ${playerRef.username}'s data in world '${world.name}'..")
 
@@ -62,7 +62,7 @@ class WorldBound(init: JavaPluginInit) : JavaPlugin(init) {
                 holder.load(data)
             }
 
-            save(uuid.uuid, holder).get()
+            save(uuid, holder).get()
 
             player.markNeedsSave()
             player.sendInventory()
